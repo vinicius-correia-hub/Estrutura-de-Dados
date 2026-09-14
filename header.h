@@ -11,6 +11,7 @@ void insereInicio(No **p_inicio, int info);
 void insereMeio(No **p_inicio, int info, int pos);
 void insereFim(No **p_inicio, int info);
 void imprimeLista(No *p_inicio);
+void removeElemento(No **p_inicio, int posicao);
 
 
 #endif

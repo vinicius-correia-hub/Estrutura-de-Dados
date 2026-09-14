@@ -10,7 +10,7 @@ void insereInicio(No **p_inicio, int info){
 	No *novo_no = (No*) malloc (sizeof(No));
 	
 	if(novo_no == NULL){
-		printf("Erro na aloca��o de memoria");
+		printf("Erro na alocacao de memoria");
 		return;
 	}
 
@@ -72,6 +72,47 @@ void insereMeio(No **p_inicio, int info, int pos){
 	printf("Posição %d inválida para esta lista!", pos);
 }
 
+void removeElemento(No **p_inicio, int posicao){
+    if(*p_inicio == NULL){
+        printf("A lista está vazia");
+        return;
+    }
+    if(posicao < 1){
+        printf("Posicao digitada é inválida!");
+        return;
+    }
+
+    if(posicao == 1){
+        No *remove = *p_inicio;
+        *p_inicio = (*p_inicio) -> prox;
+        free(remove);
+        printf("Elemento apagado com sucesso.");
+        return;
+    }
+
+    int cont = 1;
+    No *percorre = *p_inicio;
+
+
+    while(percorre != NULL){
+        if(cont == posicao - 1){
+            if(percorre -> prox == NULL){
+                printf("Posicao inválida");
+                return;
+            }
+            No *remove = percorre -> prox;
+            percorre -> prox = remove -> prox;
+            free(remove); 
+            printf("Posicao removida com sucesso!");
+            return;
+        }
+        percorre = percorre -> prox;
+        
+        cont++;
+    }
+
+    printf("A posicao informada nao existe na lista!");
+}
 
 
 void imprimeLista(No *p_inicio){
